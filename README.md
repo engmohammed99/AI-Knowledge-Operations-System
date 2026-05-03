@@ -41,3 +41,5 @@ cd AI-Knowledge-Operations-System
 docker-compose up --build
 ```
 The UI will be available at `http://localhost:3000`.
+
+🧠 **Curious about how this scales?** Read the detailed system design, data flows, and trade-offs in [ARCHITECTURE.md](./ARCHITECTURE.md).

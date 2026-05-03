@@ -18,9 +18,10 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# Only copy the package files and install production dependencies
+# Copy package files and install ALL dependencies
+# (drizzle-kit & typescript are needed at runtime for db:push migrations)
 COPY package*.json ./
-RUN npm ci --only=production
+RUN npm ci
 
 # Copy the compiled JavaScript from the builder stage
 COPY --from=builder /app/dist ./dist
@@ -33,5 +34,5 @@ COPY --from=builder /app/tsconfig.json ./tsconfig.json
 # Expose the API port
 EXPOSE 5000
 
-# Run database migrations before starting the server
-CMD npm run db:push && node dist/server.js
+# Run database migrations (--force skips interactive prompt) before starting the server
+CMD npx drizzle-kit push --force && node dist/server.js

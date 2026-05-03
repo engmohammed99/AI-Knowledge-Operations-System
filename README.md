@@ -1,8 +1,8 @@
-# AI Knowledge Copilot 🧠
+# AI Knowledge Operations System 
 
 An enterprise-grade, end-to-end Retrieval-Augmented Generation (RAG) system built to ingest, process, and proactively analyze business documents.
 
-## 🚀 Architecture Overview
+## Architecture Overview
 
 This system was built with a "Founding Engineer" mindset, prioritizing scalability, separation of concerns, and defensive programming.
 
@@ -11,7 +11,7 @@ This system was built with a "Founding Engineer" mindset, prioritizing scalabili
 - **Database Layer:** PostgreSQL (via Drizzle ORM) for relational metadata and chunk storage, paired with Pinecone for ultra-fast vector similarity search.
 - **AI Engine:** OpenAI `text-embedding-3-small` (for ingestion) and `gpt-4o-mini` (for Q&A and Cron Job reasoning).
 
-## ⚡ Key Features
+## Key Features
 
 1. **Intelligent Ingestion Pipeline:** 
    - Files are hashed (SHA-256) upon upload to prevent duplicate processing.
@@ -22,7 +22,7 @@ This system was built with a "Founding Engineer" mindset, prioritizing scalabili
 3. **Transparent Reasoning UI:**
    - Hallucination prevention is built into the UI. Every AI response includes clickable citation tags that open a dedicated side-panel, revealing the exact document chunk and the AI's logical reasoning for selecting it.
 
-## 🛠️ Quick Start (Docker)
+## Quick Start (Docker)
 
 To spin up the entire architecture (Postgres DB, Node API, Next.js UI), ensure Docker is installed and run:
 
@@ -42,4 +42,4 @@ docker-compose up --build
 ```
 The UI will be available at `http://localhost:3000`.
 
-🧠 **Curious about how this scales?** Read the detailed system design, data flows, and trade-offs in [ARCHITECTURE.md](./ARCHITECTURE.md).
+**Curious about how this scales?** Read the detailed system design, data flows, and trade-offs in [ARCHITECTURE.md](./ARCHITECTURE.md).

@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #254b73;
+  --color-primary-light: #4a89c8;
+  --color-primary-dark: #1e3a5a;
+  --color-accent: #fdb514;
+  --color-accent-yellow: #fdb514;
+  --color-background: #f0f7ff;
+  --color-text-dark: #1a202c;
+  --color-text-muted: #718096;
+  --font-sans: 'Cairo', sans-serif;
+  --shadow-glass: 0 10px 30px -10px rgba(0,0,0,0.1);
+  --shadow-chat: 0 4px 15px rgba(0,0,0,0.05);
+  --shadow-chat-user: 0 4px 15px rgba(42, 90, 138, 0.3);
+}
+
+@layer base {
+  :root {
+    --font-cairo: 'Cairo', sans-serif;
+  }
+  body {
+    @apply bg-background text-text-dark font-sans antialiased min-h-screen;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-md border border-white/40 shadow-glass;
+  }
+  
+  .btn-primary {
+    @apply bg-gradient-to-br from-primary to-primary-light text-white rounded-full font-semibold transition-all duration-300 hover:shadow-lg hover:opacity-90 disabled:opacity-50;
+  }
+}

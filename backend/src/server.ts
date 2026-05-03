@@ -2,6 +2,10 @@ import express, { Request, Response } from 'express';
 import cors from 'cors';
 import * as dotenv from 'dotenv';
 import { pool } from './db/index.js';
+import ingestRoutes from './routes/ingest.routes.js';
+import aiRoutes from './routes/ai.routes.js';
+import documentRoutes from './routes/document.routes.js';
+import { startInsightCron } from './jobs/insight.job.js';
 
 dotenv.config();
 
@@ -11,6 +15,11 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Routes
+app.use('/api/ingest', ingestRoutes);
+app.use('/api/ai', aiRoutes);
+app.use('/api/docs', documentRoutes);
 
 // Health Check Route
 app.get('/health', (req: Request, res: Response) => {
@@ -27,4 +36,7 @@ app.listen(PORT, async () => {
     } catch (error) {
         console.error('Failed to connect to the database:', error);
     }
+    
+    // Start the background intelligence engine
+    startInsightCron(); 
 });
